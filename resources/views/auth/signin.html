@@ -1,0 +1,20 @@
+{% extends 'templates/app.html' %}
+
+{% block content %}
+
+<form method="post" action="{{ path_for('auth.signin') }}" data-ajax='false'>    
+    <label for="text-basic">Email:</label>    
+    <input type="text" name="email" id="email" value="{{ old.email }}">
+    {% if errors.email %}
+    	<span class="errors">{{ errors.email | first }}</span>
+    {% endif %}
+    <label for="text-basic">Senha:</label> 
+    <input type="password" name="password" id="password" value="{{ old.password }}">
+    {% if errors.passwod %}
+    	<span class="errors">{{ errors.password | first }}</span>
+    {% endif %}
+    <button class="ui-btn ui-corner-all">Salvar</button> 
+    {{ csrf.field | raw }}             
+</form>
+
+{% endblock %}

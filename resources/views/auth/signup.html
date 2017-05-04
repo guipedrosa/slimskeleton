@@ -1,0 +1,35 @@
+{% extends 'templates/app.html' %}
+
+{% block content %}
+
+<form method="post" action="{{ path_for('auth.signup') }}" data-ajax='false'>    
+    <label for="text-basic">Nome:</label>    
+    <input type="text" name="name" id="name" value="{{ old.name }}">
+    {% if errors.name %}
+    	<span class="errors">{{ errors.name | first }}</span>
+    {% endif %}
+    <label for="text-basic">Email:</label>    
+    <input type="text" name="email" id="email" value="{{ old.email }}">
+    {% if errors.email %}
+    	<span class="errors">{{ errors.email | first }}</span>
+    {% endif %}
+    <label for="text-basic">Senha:</label> 
+    <input type="password" name="password" id="password" value="{{ old.password }}">
+    {% if errors.passwod %}
+    	<span class="errors">{{ errors.password | first }}</span>
+    {% endif %}
+<!--     <fieldset data-role="controlgroup">
+        <legend for="admin">Admin:</legend>
+        <input type="checkbox" name="admin" id="admin">
+    </fieldset>
+    <br>
+    <fieldset data-role="controlgroup">
+        <legend for="ativo">Ativo:</legend>
+        <input type="checkbox" name="ativo" id="ativo">
+    </fieldset>
+    <br> -->
+    <button class="ui-btn ui-corner-all">Salvar</button>   
+    {{ csrf.field | raw }}             
+</form>
+
+{% endblock %}
